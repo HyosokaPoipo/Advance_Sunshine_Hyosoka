@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -34,6 +35,7 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("MainActivity", "onCreate--start");
         super.onCreate(savedInstanceState);
         mLocation = Utility.getPreferredLocation(this);
 
@@ -72,6 +74,7 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.i("MainActivity", "onOptionsItemSelected");
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -80,6 +83,7 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
+            Log.i("MainActivity", "onOptionsItemSelected-action_settings");
             return true;
         }
 
@@ -102,14 +106,17 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
             }
             mLocation = location;
         }
+        Log.i("MainActivity","onResume--end");
     }
 
     @Override
     public void onItemSelected(Uri contentUri) {
+        Log.i("MainActivity","onItemSelected--start");
         if (mTwoPane) {
             // In two-pane mode, show the detail view in this activity by
             // adding or replacing the detail fragment using a
             // fragment transaction.
+            Log.i("MainActivity", "onItemSelected--if mTwoPane");
             Bundle args = new Bundle();
             args.putParcelable(DetailFragment.DETAIL_URI, contentUri);
 
@@ -119,7 +126,10 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.weather_detail_container, fragment, DETAILFRAGMENT_TAG)
                     .commit();
+
+
         } else {
+            Log.i("MainActivity", "onItemSelected--else mTwoPane");
             Intent intent = new Intent(this, DetailActivity.class)
                     .setData(contentUri);
             startActivity(intent);

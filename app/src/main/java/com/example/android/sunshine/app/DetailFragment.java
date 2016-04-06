@@ -25,6 +25,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.ShareActionProvider;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -133,6 +134,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         if (mForecast != null) {
             mShareActionProvider.setShareIntent(createShareForecastIntent());
         }
+        Log.i("DetailFragment", "onCreateOptionMenu--endofline");
     }
 
     private Intent createShareForecastIntent() {
@@ -157,7 +159,9 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             Uri updatedUri = WeatherContract.WeatherEntry.buildWeatherLocationWithDate(newLocation, date);
             mUri = updatedUri;
             getLoaderManager().restartLoader(DETAIL_LOADER, null, this);
+
         }
+        Log.i("DetailFragment","onLocationChanged--endOfLine");
     }
 
     @Override

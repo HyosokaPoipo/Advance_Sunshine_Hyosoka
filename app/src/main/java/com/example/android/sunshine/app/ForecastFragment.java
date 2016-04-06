@@ -87,6 +87,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        Log.i("ForecastFragment","onSharedPreferenceChanged--start");
         if (key.equals(getString(R.string.pref_location_status_key))) {
             updateEmptyView();
         }
@@ -109,6 +110,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Log.i("ForecastFragment","onCreate--start");
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle menu events.
         setHasOptionsMenu(true);
@@ -121,6 +123,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.i("ForecastFragment","onOptionsItemSelected--start");
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -266,6 +269,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
             mListView.smoothScrollToPosition(mPosition);
         }
         updateEmptyView();
+        Log.i("ForecastFragment","onLoadFinished--end of function");
     }
 
     @Override
@@ -285,6 +289,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
       use to determine why they aren't seeing weather.
     */
     private void updateEmptyView() {
+        Log.i("ForecastFragment","updateEmptyView---start");
         if (mForecastAdapter.getCount() == 0) {
             TextView tv = (TextView) getView().findViewById(R.id.listview_forecast_empty);
             if (null != tv) {
@@ -317,6 +322,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public void onResume() {
+        Log.i("ForecastFragment","onResume--start");
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
         sp.registerOnSharedPreferenceChangeListener(this);
         super.onResume();
@@ -324,6 +330,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public void onPause() {
+        Log.i("ForecastFragment","onPause--start");
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
         sp.unregisterOnSharedPreferenceChangeListener(this);
         super.onPause();

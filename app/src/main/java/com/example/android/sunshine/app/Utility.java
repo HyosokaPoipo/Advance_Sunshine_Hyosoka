@@ -21,6 +21,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.text.format.Time;
+import android.util.Log;
 
 import com.example.android.sunshine.app.sync.SunshineSyncAdapter;
 
@@ -29,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Utility {
+    private static String log_utility = "Utility.java";
     public static String getPreferredLocation(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getString(context.getString(R.string.pref_location_key),
@@ -284,6 +286,7 @@ public class Utility {
      * @param c Context used to get the SharedPreferences
      */
      static public void resetLocationStatus(Context c){
+         Log.i(log_utility,"resetLocationStatus--start");
        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
        SharedPreferences.Editor spe = sp.edit();
        spe.putInt(c.getString(R.string.pref_location_status_key), SunshineSyncAdapter.LOCATION_STATUS_UNKNOWN);
