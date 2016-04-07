@@ -134,7 +134,7 @@ public class SettingsActivity extends PreferenceActivity
             // Lokasinya telah berubah jadi harus direset...
             Utility.resetLocationStatus(this);
             SunshineSyncAdapter.syncImmediately(this);
-            Log.i("SettingActivity", "onSharedPreferenceChanged-endofLine");
+            Log.i("SettingActivity", "onSharedPreferenceChanged-key.equals Location");
         } else if ( key.equals(getString(R.string.pref_units_key)) ) {
             // units have changed. update lists of weather entries accordingly
             getContentResolver().notifyChange(WeatherContract.WeatherEntry.CONTENT_URI, null);

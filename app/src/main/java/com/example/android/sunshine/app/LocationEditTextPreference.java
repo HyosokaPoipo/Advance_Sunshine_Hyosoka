@@ -1,7 +1,28 @@
 package com.example.android.sunshine.app;
 
 /**
- * Created by Etit-Ind8 on 4/7/2016.
+ * Created by HyosokaPoipo on 4/7/2016.
  */
-public class LocationEditTextPreference {
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.preference.EditTextPreference;
+import android.util.AttributeSet;
+
+public class LocationEditTextPreference extends EditTextPreference {
+    static final private int DEFAULT_MINIMUM_LOCATION_LENGTH = 2;
+    private int mMinLength;
+
+    public LocationEditTextPreference(Context context, AttributeSet attrs) {
+           super(context, attrs);
+           TypedArray a = context.getTheme().obtainStyledAttributes(
+                        attrs,
+                        R.styleable.LocationEditTextPreference,
+                        0, 0);
+    try {
+        mMinLength = a.getInteger(R.styleable.LocationEditTextPreference_minLength, DEFAULT_MINIMUM_LOCATION_LENGTH);
+     } finally {
+        a.recycle();
+     }
+    }
 }
