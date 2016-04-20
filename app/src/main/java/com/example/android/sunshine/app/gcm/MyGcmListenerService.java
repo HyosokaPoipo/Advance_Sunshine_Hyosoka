@@ -37,6 +37,7 @@ public class MyGcmListenerService extends GcmListenerService {
      */
      @Override
      public void onMessageReceived(String from, Bundle data) {
+         Log.i(TAG,"GCM LISTENER MESSAGE RECEIVED...");
        // Time to unparcel the bundle!
        if (!data.isEmpty()) {
         // TODO: gcm_default sender ID comes from the API console

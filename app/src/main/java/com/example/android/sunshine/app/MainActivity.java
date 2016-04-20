@@ -80,10 +80,13 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
             if(!sentToken)
             {
                Intent intent = new Intent(this, RegistrationIntentService.class);
-               startActivity(intent);
+               startService(intent);
             }
 
           }
+        Log.i("MainActiviti", "RegistrationIntentService");
+        Intent intent = new Intent(this, RegistrationIntentService.class);
+        startService(intent);
     }
 
     @Override

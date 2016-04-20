@@ -31,10 +31,11 @@ public class RegistrationIntentService extends IntentService {
             //pake teknik synchronized biar tiap refresh event itu dihandle berurutan
             synchronized (TAG)
             {
+                Log.i(TAG, "Create Token Initialized....");
                 //initial call buat ngedapatin token
                 InstanceID instanceID = InstanceID.getInstance(this);
-                String token = instanceID.getToken(getString(R.string.gcm_dfultSenderId),
-                        GoogleCloudMessaging.INSTANCE_ID_SCOPE,null);
+                String token = instanceID.getToken(getString(R.string.gcm_hisokaSenderId),
+                        GoogleCloudMessaging.INSTANCE_ID_SCOPE);
                 sendRegistrationToServer(token);
 
                 //simpen nilai boolean yg nunjukin tokennya udh dikirim ke server ato belum
