@@ -588,4 +588,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
            spe.putInt(c.getString(R.string.pref_location_status_key), locationStatus);
            spe.commit();
        }
+
+
+    ///
 }
